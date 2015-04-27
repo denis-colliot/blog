@@ -1,0 +1,24 @@
+# System files.
+*~
+.DS_Store
+
+# Maven files.
+target
+
+# IntelliJ IDE files.
+*.iml
+*.ipr
+*.iws
+*.idea
+
+# Eclispe IDE files.
+*.classpath
+*.project
+
+# Project files/folders that should be ignored.
+catalina.base_IS_UNDEFINED
+src/main/webapp/WEB-INF/lib/
+src/main/webapp/WEB-INF/classes/
+src/main/webapp/WEB-INF/deploy/
+src/main/webapp/blog/
+persistence.properties
