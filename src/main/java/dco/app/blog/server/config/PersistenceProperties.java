@@ -60,8 +60,8 @@ final class PersistenceProperties {
             properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
             properties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
             properties.setProperty("hibernate.connection.url", "jdbc:mysql://" + host + ":3306/" + dbName);
-            properties.setProperty("hibernate.username", username);
-            properties.setProperty("hibernate.password", password);
+            properties.setProperty("hibernate.connection.username", username);
+            properties.setProperty("hibernate.connection.password", password);
 
             properties.setProperty("hibernate.hbm2ddl.auto", "");
             properties.setProperty("hibernate.show_sql", "false");
@@ -88,8 +88,8 @@ final class PersistenceProperties {
             setMandatory(properties, "hibernate.dialect");
             setMandatory(properties, "hibernate.connection.driver_class");
             setMandatory(properties, "hibernate.connection.url");
-            setMandatory(properties, "hibernate.username");
-            setMandatory(properties, "hibernate.password");
+            setMandatory(properties, "hibernate.connection.username");
+            setMandatory(properties, "hibernate.connection.password");
 
             // Optional properties that can be overridden.
             setOptional(properties, "hibernate.archive.autodetection", "class");
