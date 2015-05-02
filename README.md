@@ -14,16 +14,23 @@ Blog access: [http://blog-denisc-anonymous.eu4.cloudunit.io](http://blog-denisc-
 ## Configure persistence
 In debug environment, the application expects a configuration file named `persistence.properties` in the classpath.
 
-To do so, execute the following steps:
+To fulfill this expectation, execute the following steps:
+ 1. Create this file in your local classpath (most-likely in `src/main/resources` directory).
+ 2. Declare the following required properties inside it:
+  * `hibernate.dialect`
+  * `hibernate.connection.driver_class`
+  * `hibernate.connection.url`
+  * `hibernate.connection.username`
+  * `hibernate.connection.password`
 
-1. Create this file in your local classpath (most-likely in `src/main/resources` directory).
-2. Declare the following required properties inside it:
- * `hibernate.dialect`
- * `hibernate.connection.driver_class`
- * `hibernate.connection.url`
- * `hibernate.username`
- * `hibernate.password`
-
+*Example `persistence.properties` file for `PostgreSQL 9.x` database:*
+```
+hibernate.dialect=org.hibernate.dialect.PostgreSQL9Dialect
+hibernate.connection.driver_class=org.postgresql.Driver
+hibernate.connection.url=jdbc:postgresql://localhost:5432/<dbname>
+hibernate.connection.username=<username>
+hibernate.connection.password=<password>
+```
 
 ## Run application
 
