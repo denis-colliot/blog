@@ -21,6 +21,8 @@
     <extend-property name="locale" values="fr,en" />
     <set-property-fallback name="locale" value="fr" />
 
+    <set-property name="user.agent" value="gecko1_8, safari, ie10" />
+
     <!-- Entry point. -->
     <entry-point class="dco.app.blog.client.Blog" />
 
