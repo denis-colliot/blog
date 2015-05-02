@@ -27,7 +27,12 @@ final class PersistenceProperties {
     private static final Properties PROPERTIES = new Properties();
 
     /**
+     * <p>
      * Initializes the persistence properties.
+     * </p>
+     * <p>
+     * Detects automatically local environment from production environment.
+     * </p>
      *
      * @return The persistence properties.
      */
@@ -109,6 +114,9 @@ final class PersistenceProperties {
         return properties;
     }
 
+    /**
+     * Loads the local {@code persistence.properties} file and populates {@link #PROPERTIES}.
+     */
     private static void loadLocalConfiguration() {
         try (final InputStream is = PersistenceModule.class.getClassLoader().getResourceAsStream(FILE)) {
 
@@ -125,14 +133,47 @@ final class PersistenceProperties {
         }
     }
 
+    /**
+     * Sets the <b>mandatory</b> {@code key} property.
+     *
+     * @param properties
+     *         The persistence properties that <b>should</b> contain the corresponding value.
+     * @param key
+     *         The property key.
+     * @throws IllegalArgumentException
+     *         If the given {@code properties} do not contain {@code key} value.
+     */
     private static void setMandatory(Properties properties, String key) {
         set(properties, key, null, true);
     }
 
+    /**
+     * Sets the <b>optional</b> {@code key} property.<br>
+     * If the {@code properties} do not contain {@code key} value, its value is set to {@code null}.
+     *
+     * @param properties
+     *         The persistence properties that <b>may</b> contain the corresponding value.
+     * @param key
+     *         The property key.
+     */
     private static void setOptional(Properties properties, String key, String defaultValue) {
         set(properties, key, defaultValue, false);
     }
 
+    /**
+     * Sets the {@code key} property.
+     *
+     * @param properties
+     *         The persistence properties that may/should contain the corresponding value.
+     * @param key
+     *         The property key.
+     * @param defaultValue
+     *         The default value used if the optional {@code key} property is not found among {@code properties}.
+     * @param mandatory
+     *         Is it a mandatory property?
+     * @throws IllegalArgumentException
+     *         If the given {@code properties} do not contain the <b>mandatory</b> {@code key} value.
+     */
     private static void set(Properties properties, String key, String defaultValue, boolean mandatory) {
         if (mandatory && !PROPERTIES.containsKey(key)) {
             throw new IllegalArgumentException("Missing required persistence property '" + key + "'.");
