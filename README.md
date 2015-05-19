@@ -2,7 +2,7 @@
 
 Personal blog wen application built around [GWT](http://www.gwtproject.org) 2.7.0 and deployed on [CloudUnit](http://cloudunit.fr).
 
-Blog access: [http://blog-denisc-anonymous.eu4.cloudunit.io](http://blog-denisc-anonymous.eu4.cloudunit.io)
+Blog access: [http://blog-denisc-anonymous.eu4.cloudunit.io](http://blog-denisc-anonymous.eu3.cloudunit.io)
 
 
 ## Pre-requisites
