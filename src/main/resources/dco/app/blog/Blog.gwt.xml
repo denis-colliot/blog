@@ -14,6 +14,11 @@
     <!-- GIN (Google INjector) -->
     <inherits name="com.google.gwt.inject.Inject" />
 
+    <!-- Logging configuration (client side): gwt-log. -->
+    <inherits name="com.allen_sauer.gwt.log.gwt-log-TRACE" /> <!-- Available levels: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF. -->
+    <set-configuration-property name="log_pattern" value="[%-5p] {%d{yyyy/MM/dd HH:mm:ss.SSS}} %C - %m%n" />
+    <set-property name="log_DivLogger" value="DISABLED" />
+
     <!-- Material Design. -->
     <inherits name="gwt.material.design.GwtMaterialDesign" />
 
