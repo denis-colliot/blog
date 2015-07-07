@@ -20,8 +20,7 @@ import dco.app.blog.shared.command.result.SecureNavigationResult;
 /**
  * Application event bus implementation.
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
- * @author Tom Miette (tmiette@ideia.fr)
+ * @author Denis
  */
 @Singleton
 public class EventBusImpl extends HandlerManager implements EventBus {
@@ -39,7 +38,7 @@ public class EventBusImpl extends HandlerManager implements EventBus {
     /**
      * Callback interface used to handle {@link dco.app.blog.client.event.page.PageRequestEvent} dispatch action.
      *
-     * @author Denis Colliot (dcolliot@ideia.fr)
+     * @author Denis
      */
     private static interface PageRequestEventCallback {
 

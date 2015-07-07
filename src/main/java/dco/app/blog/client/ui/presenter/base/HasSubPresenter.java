@@ -17,7 +17,7 @@ public interface HasSubPresenter<V extends HasSubView> extends Presenter<V> {
      *
      * @param <P>
      *         Parent presenter type.
-     * @author Denis Colliot (dcolliot@ideia.fr)
+     * @author Denis
      */
     public static interface SubPresenter<P extends HasSubPresenter<? extends HasSubView>> {
 

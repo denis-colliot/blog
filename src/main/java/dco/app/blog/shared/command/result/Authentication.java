@@ -1,21 +1,21 @@
 package dco.app.blog.shared.command.result;
 
 import dco.app.blog.client.util.ToStringBuilder;
+import dco.app.blog.shared.Language;
 import dco.app.blog.shared.command.result.base.Result;
 
 /**
  * <p>
  * Encapsulates authenticated user identity. If no user is authenticated, this object encapsulates <em>anonymous</em>
- * user identity, see {@link org.sigmah.server.servlet.base.ServletExecutionContext#ANONYMOUS_USER ANONYMOUS_USER}.
+ * user identity, see {@link dco.app.blog.server.servlet.base.ServletExecutionContext#ANONYMOUS_USER ANONYMOUS_USER}.
  * </p>
  * <p>
  * This object is managed by {@link dco.app.blog.client.security.AuthenticationProvider}.
  * </p>
  *
- * @author Alex Bertram
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  * @see dco.app.blog.client.security.AuthenticationProvider
- * @see ServletExecutionContext#ANONYMOUS_USER
+ * @see dco.app.blog.server.servlet.base.ServletExecutionContext#ANONYMOUS_USER
  */
 public class Authentication implements Result {
 
@@ -45,10 +45,25 @@ public class Authentication implements Result {
     private String userFirstName;
 
     /**
+     * The currently authenticated user's language.
+     */
+    private Language language;
+
+    /**
      * Necessary constructor for serialization.
      */
     public Authentication() {
         // Serialization.
+    }
+
+    /**
+     * Initializes a new {@code Authentication} instance with the given {@code language}.
+     *
+     * @param language
+     *         The language.
+     */
+    public Authentication(Language language) {
+        this.language = language;
     }
 
     /**
@@ -62,12 +77,15 @@ public class Authentication implements Result {
      *         The user's last name.
      * @param userFirstName
      *         The user's first name.
+     * @param language
+     *         The user's language.
      */
-    public Authentication(Integer userId, String userEmail, String userName, String userFirstName) {
+    public Authentication(Integer userId, String userEmail, String userName, String userFirstName, Language language) {
         this.userId = userId;
         this.userEmail = userEmail;
         this.userName = userName;
         this.userFirstName = userFirstName;
+        this.language = language;
     }
 
     /**
@@ -82,6 +100,7 @@ public class Authentication implements Result {
         builder.append("userEmail", userEmail);
         builder.append("userName", userName);
         builder.append("userFirstName", userFirstName);
+        builder.append("language", language);
 
         return builder.toString();
     }
@@ -153,4 +172,7 @@ public class Authentication implements Result {
         return userFirstName;
     }
 
+    public Language getLanguage() {
+        return language;
+    }
 }

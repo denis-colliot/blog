@@ -27,6 +27,12 @@ public class User extends AbstractEntity<Long> {
     @Column(name = "us_password", nullable = false)
     private String password;
 
+    @Column(name = "us_email", nullable = true)
+    private String email;
+
+    @Column(name = "us_active", nullable = false)
+    private boolean active;
+
     /**
      * {@inheritDoc}
      */
@@ -36,6 +42,8 @@ public class User extends AbstractEntity<Long> {
         builder.append("firstName", firstName);
         builder.append("login", login);
         builder.append("password", "[PROTECTED]");
+        builder.append("email", email);
+        builder.append("active", active);
     }
 
     public String getName() {
@@ -68,5 +76,21 @@ public class User extends AbstractEntity<Long> {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

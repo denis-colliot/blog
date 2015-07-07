@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 /**
  * Abstract DAO test class initializing {@code Injector}.
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  */
 @RunWith(GuiceJUnitRunner.class)
 @GuiceJUnitRunner.GuiceModules({

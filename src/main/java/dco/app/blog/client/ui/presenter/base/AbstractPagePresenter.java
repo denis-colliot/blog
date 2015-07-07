@@ -34,13 +34,6 @@ import dco.app.blog.client.util.MessageType;
  * entry point in order to register presenter.</li>
  * </ol>
  * </p>
- * <p>
- * <b>Utility methods provided to presenter implementations:</b>
- * <ul>
- * <li>{@link #auth()} to access the current authentication.</li>
- * <li>{@link #isAnonymous()} to check if no user is currently authenticated.</li>
- * </ul>
- * </p>
  *
  * @param <V>
  *         View interface extending the {@link ViewInterface} interface

@@ -32,13 +32,6 @@ import java.util.List;
  * entry point in order to register presenter.</li>
  * </ol>
  * </p>
- * <p>
- * <b>Utility methods provided to presenter implementations:</b>
- * <ul>
- * <li>{@link #auth()} to access the current authentication.</li>
- * <li>{@link #isAnonymous()} to check if no user is currently authenticated.</li>
- * </ul>
- * </p>
  *
  * @param <V>
  *         Presenter's view interface extending the {@link ViewInterface} interface.

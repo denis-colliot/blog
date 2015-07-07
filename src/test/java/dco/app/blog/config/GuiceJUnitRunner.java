@@ -32,14 +32,14 @@ import java.util.List;
  * }
  * </pre>
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  */
 public final class GuiceJUnitRunner extends BlockJUnit4ClassRunner {
 
     /**
      * Annotation used to specify modules to load for JUnit tests.
      *
-     * @author Denis Colliot (dcolliot@ideia.fr)
+     * @author Denis
      */
     @Target(ElementType.TYPE)
     @Retention(RetentionPolicy.RUNTIME)
@@ -71,8 +71,10 @@ public final class GuiceJUnitRunner extends BlockJUnit4ClassRunner {
     /**
      * Guice JUnit runner initialization.
      *
-     * @param klass The class defining injector modules to initialize.
-     * @throws InitializationError If an error occurs during injector creation.
+     * @param klass
+     *         The class defining injector modules to initialize.
+     * @throws InitializationError
+     *         If an error occurs during injector creation.
      */
     public GuiceJUnitRunner(final Class<?> klass) throws InitializationError {
 
@@ -89,9 +91,11 @@ public final class GuiceJUnitRunner extends BlockJUnit4ClassRunner {
     /**
      * Creates the {@link Injector} instance for the given modules {@code classes}.
      *
-     * @param classes The modules classes.
+     * @param classes
+     *         The modules classes.
      * @return the created {@link Injector} instance.
-     * @throws InitializationError If an error occurs during module(s) instantiation.
+     * @throws InitializationError
+     *         If an error occurs during module(s) instantiation.
      */
     private static Injector createInjectorFor(final List<Class<?>> classes) throws InitializationError {
 
@@ -114,9 +118,11 @@ public final class GuiceJUnitRunner extends BlockJUnit4ClassRunner {
     /**
      * Returns the modules classes defined in given {@code klass} {@link GuiceModules} annotation.
      *
-     * @param klass The class defining a {@code GuiceModules} annotation.
+     * @param klass
+     *         The class defining a {@code GuiceModules} annotation.
      * @return The modules classes defined in given {@code klass} {@link GuiceModules} annotation.
-     * @throws InitializationError If the {@code klass} does not define a {@link GuiceModules} annotation.
+     * @throws InitializationError
+     *         If the {@code klass} does not define a {@link GuiceModules} annotation.
      */
     private static List<Class<?>> getModulesFor(final Class<?> klass) throws InitializationError {
 

@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Provides the {@link Authentication}.
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  */
 @Singleton
 public class AuthenticationProvider implements Provider<Authentication> {
@@ -53,7 +53,7 @@ public class AuthenticationProvider implements Provider<Authentication> {
      * Logins the given {@code authentication} by setting cookies and updating cached data.
      * </p>
      * <p>
-     * <em>Should be called <b>exclusively</b> by {@link LoginPresenter}.</em>
+     * <em>Should be called <b>exclusively</b> by {@code LoginPresenter}.</em>
      * </p>
      *
      * @param authentication
@@ -73,6 +73,7 @@ public class AuthenticationProvider implements Provider<Authentication> {
 
         // Sets the cookies.
         Cookies.setCookie(dco.app.blog.shared.util.Cookies.AUTH_TOKEN_COOKIE, authentication.getAuthenticationToken(), oneDayLater(), domain, path, secure);
+        Cookies.setCookie(dco.app.blog.shared.util.Cookies.LANGUAGE_COOKIE, authentication.getLanguage().getLocale(), oneDayLater(), domain, path, secure);
 
         // Caches the authentication data.
         this.authentication = authentication;
@@ -106,7 +107,7 @@ public class AuthenticationProvider implements Provider<Authentication> {
      * Clears the current authentication (cookies + cached authentication data).
      * </p>
      * <p>
-     * TODO Maintains the {@link Language} previously set.
+     * Maintains the {@link dco.app.blog.shared.Language} previously set.
      * </p>
      *
      * @return {@code true} if the authentication has been successfully cleared.
@@ -115,7 +116,7 @@ public class AuthenticationProvider implements Provider<Authentication> {
 
         Cookies.removeCookie(dco.app.blog.shared.util.Cookies.AUTH_TOKEN_COOKIE, dco.app.blog.shared.util.Cookies.COOKIE_PATH);
 
-        authentication = new Authentication();
+        authentication = new Authentication(authentication.getLanguage());
 
         return true;
     }

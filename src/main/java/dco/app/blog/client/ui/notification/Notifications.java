@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Displays messages into a notification tray.
  *
- * @author Tom Miette (tmiette@ideia.fr)
+ * @author Denis
  */
 final class Notifications {
 

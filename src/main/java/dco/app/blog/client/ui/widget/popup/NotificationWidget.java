@@ -16,7 +16,7 @@ import dco.app.blog.client.ui.widget.panel.PopupPanel;
 /**
  * Notification widget. Used to display a simple notification pop-up on the screen.
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  */
 public class NotificationWidget extends AbstractPopupWidget<PopupPanel> {
 
@@ -30,7 +30,7 @@ public class NotificationWidget extends AbstractPopupWidget<PopupPanel> {
     /**
      * Notification widget style.
      *
-     * @author Denis Colliot (dcolliot@ideia.fr)
+     * @author Denis
      */
     public static interface NotificationStyle extends CssResource {
 

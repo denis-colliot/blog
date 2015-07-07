@@ -25,7 +25,8 @@ public interface Presenter<V extends ViewInterface> {
      * setup should be done here rather than in the constructor.
      * </p>
      * <p>
-     * Allows the presenter to be <em>initialized</em> without building its entire view (with all the widgets). Thus, the
+     * Allows the presenter to be <em>initialized</em> without building its entire view (with all the widgets). Thus,
+     * the
      * view will only be loaded during the first request to the presenter.
      * </p>
      */
@@ -65,7 +66,8 @@ public interface Presenter<V extends ViewInterface> {
      * Method executed on the <b>first</b> access of the current presenter.
      * </p>
      * <p>
-     * This method allows the presenter to be initialized without building its entire view (with all the widgets). Thus,
+     * This method allows the presenter to be initialized without building its entire view (with all the widgets).
+     * Thus,
      * the view will only be loaded during the first request to the presenter.
      * </p>
      */
@@ -106,7 +108,7 @@ public interface Presenter<V extends ViewInterface> {
      * through their page token.
      * </p>
      *
-     * @author Denis Colliot (dcolliot@ideia.fr)
+     * @author Denis
      */
     public static interface PagePresenter<V extends ViewInterface> extends Presenter<V> {
 
@@ -138,7 +140,7 @@ public interface Presenter<V extends ViewInterface> {
      * update. These presenters can be updated through their zone token.
      * </p>
      *
-     * @author Denis Colliot (dcolliot@ideia.fr)
+     * @author Denis
      */
     public static interface ZonePresenter<V extends ViewInterface> extends Presenter<V> {
 
