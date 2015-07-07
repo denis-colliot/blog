@@ -27,8 +27,13 @@ public class PopupWidget extends AbstractPopupWidget<PopupPanel> {
     PopupPanel popup;
 
     public PopupWidget() {
+        this(true, true);
+    }
+
+    public PopupWidget(final boolean modal, final boolean closeable) {
         super(new PopupPanel());
         this.popup = super.popup;
+        this.popup.setModal(modal);
 
         final PopupViewUiBinder uiBinder = GWT.create(PopupViewUiBinder.class);
         initPopupWidget(uiBinder.createAndBindUi(this));

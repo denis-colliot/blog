@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	xmlns:panel='urn:import:dco.app.blog.client.ui.widget.panel'>
+
+	<ui:image field="notifBg" src="notification-bg.png" />
+
+	<ui:style type="fr.adlc.pegase.client.widget.popup.NotificationWidget.NotificationStyle">
+	@def marginRight 20px;
+	@def marginBottom 20px;
+	@def popupWidth 200px;
+	@def popupHeight 75px;
+	@def popupPadding 5px;
+	@def borderRadius 15px;
+
+	@sprite .notification-popup {
+		/* width and height have to be set into java code. */
+		gwt-image: 'notifBg';
+		background-repeat: repeat-x;
+		background-position: left top;
+		width: auto;
+		height: auto;
+		border: 1px solid #7BA6D6;
+		background-color: white;
+		-webkit-border-radius: borderRadius;
+		-moz-border-radius: borderRadius;
+		border-radius: borderRadius;
+		overflow: hidden;
+	}
+
+	.notification-popup-panel {
+		/* padding has to be set into java code. */
+	}
+
+	.notification-popup-header {
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+
+	.notification-popup-content {
+		color: #757575;
+	}
+	</ui:style>
+
+	<panel:PopupPanel ui:field="popup" autoHideEnabled="false"
+		modal="false" animationEnabled="true" styleName="{style.notification-popup}">
+
+		<g:FlowPanel ui:field="panel" styleName="{style.notification-popup-panel}">
+			<g:Label ui:field="headerLabel" styleName="{style.notification-popup-header}"></g:Label>
+			<g:HTML ui:field="contentLabel" styleName="{style.notification-popup-content}"></g:HTML>
+		</g:FlowPanel>
+
+	</panel:PopupPanel>
+
+</ui:UiBinder>

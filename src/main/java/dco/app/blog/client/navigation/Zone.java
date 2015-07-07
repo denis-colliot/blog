@@ -16,7 +16,7 @@ public enum Zone implements IsSerializable {
 
     AUTH_BANNER("auth-banner"),
     MENU_BANNER("menu-banner"),
-    MESSAGE_BANNER("message-banner"),;
+    MESSAGE_BANNER("message-banner");
 
     /**
      * The zone token.
@@ -52,7 +52,8 @@ public enum Zone implements IsSerializable {
      *
      * @param token
      *         The zone token.
-     * @return the {@link Zone} corresponding to the given {@code token} or {@code null} if no zone exists for this token.
+     * @return the {@link Zone} corresponding to the given {@code token} or {@code null} if no zone exists for this
+     * token.
      */
     public static Zone fromString(final String token) {
         for (final Zone zone : values()) {

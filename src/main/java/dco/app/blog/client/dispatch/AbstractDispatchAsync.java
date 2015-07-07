@@ -38,7 +38,8 @@ public abstract class AbstractDispatchAsync implements DispatchAsync {
      * @param callback
      *         The execution callback.
      */
-    protected <C extends Command<R>, R extends Result> void onFailure(final C command, final Throwable caught, final AsyncCallback<R> callback,
+    protected <C extends Command<R>, R extends Result> void onFailure(final C command, final Throwable caught,
+                                                                      final AsyncCallback<R> callback,
                                                                       final Collection<Loadable> loadables) {
 
         final ExceptionHandler.Status status;
@@ -70,7 +71,9 @@ public abstract class AbstractDispatchAsync implements DispatchAsync {
      * @param callback
      *         The execution callback.
      */
-    protected <C extends Command<R>, R extends Result> void onSuccess(final C command, final R result, final AsyncCallback<R> callback) {
+    protected <C extends Command<R>, R extends Result> void onSuccess(final C command,
+                                                                      final R result,
+                                                                      final AsyncCallback<R> callback) {
         callback.onSuccess(result);
     }
 

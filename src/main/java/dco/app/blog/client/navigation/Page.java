@@ -1,7 +1,6 @@
 package dco.app.blog.client.navigation;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import dco.app.blog.client.event.page.Pages;
 import dco.app.blog.shared.property.PropertyName;
 import dco.app.blog.shared.util.ClientUtils;
 
@@ -16,8 +15,11 @@ public enum Page implements IsSerializable {
     LOGIN("login");
 
     private final String parentKey;
+
     private final String token;
+
     private final boolean skipHistory;
+
     private String pageTitle;
 
     /**
@@ -163,7 +165,8 @@ public enum Page implements IsSerializable {
      * The method follows this pattern:
      * <ol>
      * <li>The page is {@code null}: returns {@code null}.</li>
-     * <li>The page carries a dynamic title value: returns the dynamic page title (see {@link #setTitle(String)} method).</li>
+     * <li>The page carries a dynamic title value: returns the dynamic page title (see {@link #setTitle(String)}
+     * method).</li>
      * <li>[<em>client-side only</em>] Returns a static i18n constant associated to the page.</li>
      * <li>Returns an error value containing the page token.</li>
      * </ol>

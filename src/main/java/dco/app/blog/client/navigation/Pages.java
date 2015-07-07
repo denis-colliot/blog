@@ -1,7 +1,5 @@
 package dco.app.blog.client.navigation;
 
-import dco.app.blog.client.navigation.Page;
-
 import java.util.HashMap;
 import java.util.Map;
 

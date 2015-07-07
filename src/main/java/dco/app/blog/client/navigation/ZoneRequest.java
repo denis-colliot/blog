@@ -11,6 +11,7 @@ import java.util.Map;
 public class ZoneRequest {
 
     private Zone zone;
+
     private Map<RequestParameter, Object> dataParameters; // Can be null.
 
     public ZoneRequest(final Zone zone) {
@@ -32,7 +33,8 @@ public class ZoneRequest {
      * {@code key} and {@code value}.
      * </p>
      * <p>
-     * If a <b>data object</b> parameter with the same {@code key} was previously specified, the returned request contains
+     * If a <b>data object</b> parameter with the same {@code key} was previously specified, the returned request
+     * contains
      * the new value.
      * </p>
      *
@@ -57,7 +59,8 @@ public class ZoneRequest {
      *         Data type.
      * @param key
      *         The data parameter key.
-     * @return The given {@code key} corresponding data contained in the page request, or {@code null} if the data doesn't
+     * @return The given {@code key} corresponding data contained in the page request, or {@code null} if the data
+     * doesn't
      * exist or if its type is not {@code T}.
      */
     @SuppressWarnings("unchecked")

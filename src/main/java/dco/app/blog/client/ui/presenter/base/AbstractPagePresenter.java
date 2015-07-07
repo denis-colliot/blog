@@ -2,22 +2,18 @@ package dco.app.blog.client.ui.presenter.base;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
-import com.google.inject.Injector;
+import dco.app.blog.client.config.Injector;
 import dco.app.blog.client.event.bus.EventBus;
 import dco.app.blog.client.event.page.PageChangedEvent;
 import dco.app.blog.client.event.page.PageRequestEvent;
 import dco.app.blog.client.event.page.PageRequestHandler;
-import dco.app.blog.client.i18n.I18N;
 import dco.app.blog.client.navigation.Page;
 import dco.app.blog.client.navigation.PageManager;
 import dco.app.blog.client.navigation.PageRequest;
-import dco.app.blog.client.ui.notification.ConfirmCallback;
-import dco.app.blog.client.ui.notification.N10N;
 import dco.app.blog.client.ui.view.base.AbstractView;
 import dco.app.blog.client.ui.view.base.ViewInterface;
 import dco.app.blog.client.ui.view.base.ViewPopupInterface;
 import dco.app.blog.client.util.MessageType;
-import dco.app.blog.shared.util.ClientUtils;
 
 /**
  * <p>
@@ -33,7 +29,8 @@ import dco.app.blog.shared.util.ClientUtils;
  * <li>Define an inner <em>static</em> interface representing the presenter's view. This interface must have the
  * {@link com.google.inject.ImplementedBy} annotation referencing the view implementation (<u>crucial</u>).<br/>
  * See {@link AbstractView} javadoc to initialize the view implementation.</li>
- * <li>Add an accessor to the presenter into client-side {@link Injector} and call it into {@link dco.app.blog.client.Blog#onModuleLoad()}
+ * <li>Add an accessor to the presenter into client-side {@link Injector} and call it into {@link
+ * dco.app.blog.client.Blog#onModuleLoad()}
  * entry point in order to register presenter.</li>
  * </ol>
  * </p>
@@ -129,7 +126,8 @@ public abstract class AbstractPagePresenter<V extends ViewInterface> extends Abs
      * Can be overridden by child implementation.
      * </p>
      * <p>
-     * <b>Important:</b> don't forget to execute {@code super.afterOnPageRequest(PageRequestEvent, Page)} if the method is
+     * <b>Important:</b> don't forget to execute {@code super.afterOnPageRequest(PageRequestEvent, Page)} if the method
+     * is
      * overridden.
      * </p>
      *
@@ -278,51 +276,54 @@ public abstract class AbstractPagePresenter<V extends ViewInterface> extends Abs
     @Override
     public void beforeLeaving(final EventBus.LeavingCallback callback) {
 
-        if (!(this instanceof HasForm) && !hasValueChanged()) {
-            super.beforeLeaving(callback);
-            return;
-        }
+        callback.leavingOk();
 
-        boolean valueHasChanged = hasValueChanged();
-
-        if (!valueHasChanged && this instanceof HasForm) {
-            final FormPanel[] forms = ((HasForm) this).getForms();
-
-            if (ClientUtils.isEmpty(forms)) {
-                super.beforeLeaving(callback);
-                return;
-            }
-
-            for (final FormPanel form : forms) {
-                if (form != null && (valueHasChanged |= form.isValueHasChanged())) {
-                    break;
-                }
-            }
-        }
-
-        if (valueHasChanged) {
-            N10N.confirmation(I18N.CONSTANTS.unsavedDataMessage(), new ConfirmCallback() {
-
-                @Override
-                public void onAction() {
-                    // YES action.
-                    onLeavingOk();
-                    callback.leavingOk();
-                }
-            }, new ConfirmCallback() {
-
-                @Override
-                public void onAction() {
-                    // NO action.
-                    onLeavingKo();
-                    callback.leavingKo();
-                }
-            });
-
-        } else {
-            onLeavingOk();
-            callback.leavingOk();
-        }
+        // TODO On leaving callback handler.
+//        if (!(this instanceof HasForm) && !hasValueChanged()) {
+//            super.beforeLeaving(callback);
+//            return;
+//        }
+//
+//        boolean valueHasChanged = hasValueChanged();
+//
+//        if (!valueHasChanged && this instanceof HasForm) {
+//            final FormPanel[] forms = ((HasForm) this).getForms();
+//
+//            if (ClientUtils.isEmpty(forms)) {
+//                super.beforeLeaving(callback);
+//                return;
+//            }
+//
+//            for (final FormPanel form : forms) {
+//                if (form != null && (valueHasChanged |= form.isValueHasChanged())) {
+//                    break;
+//                }
+//            }
+//        }
+//
+//        if (valueHasChanged) {
+//            N10N.confirmation(I18N.CONSTANTS.unsavedDataMessage(), new ConfirmCallback() {
+//
+//                @Override
+//                public void onAction() {
+//                    // YES action.
+//                    onLeavingOk();
+//                    callback.leavingOk();
+//                }
+//            }, new ConfirmCallback() {
+//
+//                @Override
+//                public void onAction() {
+//                    // NO action.
+//                    onLeavingKo();
+//                    callback.leavingKo();
+//                }
+//            });
+//
+//        } else {
+//            onLeavingOk();
+//            callback.leavingOk();
+//        }
     }
 
     /**

@@ -265,24 +265,8 @@ public abstract class AbstractPopupView<P extends IsPopupWidget> implements View
      * {@inheritDoc}
      */
     @Override
-    public void setPageMessage(final String html) {
-        popup.setPageMessage(html);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void setPageMessage(final String html, final MessageType type) {
         popup.setPageMessage(html, type);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setPageMessageType(final MessageType type) {
-        popup.setPageMessageType(type);
     }
 
     /**

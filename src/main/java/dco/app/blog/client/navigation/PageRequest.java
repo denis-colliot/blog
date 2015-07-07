@@ -25,14 +25,18 @@ public final class PageRequest {
      * Character used to separate optional params in the URL.
      */
     private static final String PARAM_SEPARATOR = "&";
+
     private static final String PARAM_PATTERN = PARAM_SEPARATOR + "(?!" + PARAM_SEPARATOR + ")";
+
     private static final String PARAM_ESCAPE = PARAM_SEPARATOR + PARAM_SEPARATOR;
 
     /**
      * Character used to assign a param value.
      */
     private static final String VALUE_SEPARATOR = "=";
+
     private static final String VALUE_PATTERN = VALUE_SEPARATOR + "(?!" + VALUE_SEPARATOR + ")";
+
     private static final String VALUE_ESCAPE = VALUE_SEPARATOR + VALUE_SEPARATOR;
 
     /**
@@ -149,7 +153,8 @@ public final class PageRequest {
      *
      * @param key
      *         The parameter key.
-     * @return the parameter value corresponding to the given {@code key}, or {@code null} if the parameter is not present
+     * @return the parameter value corresponding to the given {@code key}, or {@code null} if the parameter is not
+     * present
      * inside the request.
      */
     public String getParameter(final RequestParameter key) {
@@ -163,7 +168,8 @@ public final class PageRequest {
      *         The parameter key.
      * @param defaultValue
      *         The value returned if the parameter is not found.
-     * @return the parameter value corresponding to the given {@code key}, or given {@code defaultValue} if the parameter
+     * @return the parameter value corresponding to the given {@code key}, or given {@code defaultValue} if the
+     * parameter
      * is not present inside the request.
      */
     public String getParameter(final RequestParameter key, final String defaultValue) {
@@ -184,7 +190,8 @@ public final class PageRequest {
      *
      * @param key
      *         The parameter key.
-     * @return The parameter <b>integer</b> value corresponding to the given {@code key}, or {@code null} if the parameter
+     * @return The parameter <b>integer</b> value corresponding to the given {@code key}, or {@code null} if the
+     * parameter
      * is not present inside the request or is not a valid integer.
      */
     public Integer getParameterInteger(final RequestParameter key) {
@@ -300,11 +307,13 @@ public final class PageRequest {
 
     /**
      * <p>
-     * Adds a new <b>data object</b> parameter to the current {@code PageRequest} with the given parameter {@code key} and
+     * Adds a new <b>data object</b> parameter to the current {@code PageRequest} with the given parameter {@code key}
+     * and
      * {@code value}.
      * </p>
      * <p>
-     * If a <b>data object</b> parameter with the same {@code key} was previously specified, the returned request contains
+     * If a <b>data object</b> parameter with the same {@code key} was previously specified, the returned request
+     * contains
      * the new value.
      * </p>
      *
@@ -326,7 +335,8 @@ public final class PageRequest {
      *         Data type.
      * @param key
      *         The data parameter key.
-     * @return The given {@code key} corresponding data contained in the page request, or {@code null} if the data doesn't
+     * @return The given {@code key} corresponding data contained in the page request, or {@code null} if the data
+     * doesn't
      * exist or if its type is not {@code T}.
      */
     @SuppressWarnings("unchecked")

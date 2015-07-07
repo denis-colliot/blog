@@ -5,7 +5,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.google.inject.Injector;
+import dco.app.blog.client.config.Injector;
 import dco.app.blog.client.dispatch.DispatchAsync;
 import dco.app.blog.client.event.bus.EventBus;
 import dco.app.blog.client.ui.view.base.AbstractView;
@@ -27,7 +27,8 @@ import java.util.List;
  * <li>Define an inner <em>static</em> interface representing the presenter's view. This interface must have the
  * {@link com.google.inject.ImplementedBy} annotation referencing the view implementation (<u>crucial</u>).<br/>
  * See {@link AbstractView} javadoc to initialize the view implementation.</li>
- * <li>Add an accessor to the presenter into client-side {@link Injector} and call it into {@link dco.app.blog.client.Blog#onModuleLoad()}
+ * <li>Add an accessor to the presenter into client-side {@link Injector} and call it into {@link
+ * dco.app.blog.client.Blog#onModuleLoad()}
  * entry point in order to register presenter.</li>
  * </ol>
  * </p>
@@ -224,7 +225,8 @@ public abstract class AbstractPresenter<V extends ViewInterface> implements Pres
     // ------------------------------------------------------------------------
 
     /**
-     * Any {@link HandlerRegistration}s added will be removed when {@link #unbind()} is called. This provides a handy way
+     * Any {@link HandlerRegistration}s added will be removed when {@link #unbind()} is called. This provides a handy
+     * way
      * to track event handler registrations when binding and unbinding.
      *
      * @param handlerRegistration
@@ -256,23 +258,23 @@ public abstract class AbstractPresenter<V extends ViewInterface> implements Pres
         return this instanceof HasSubPresenter.SubPresenter;
     }
 
-    /**
-     * Checks if no user is currently authenticated.
-     *
-     * @return {@code true} if no user is currently authenticated, {@code false} otherwise.
-     */
-    protected final boolean isAnonymous() {
-        return injector.getAuthenticationProvider().isAnonymous();
-    }
-
-    /**
-     * Returns the current {@link Authentication}.
-     *
-     * @return The current {@link Authentication}, never {@code null}.
-     */
-    protected final Authentication auth() {
-        return injector.getAuthenticationProvider().get();
-    }
+//    /**
+//     * Checks if no user is currently authenticated.
+//     *
+//     * @return {@code true} if no user is currently authenticated, {@code false} otherwise.
+//     */
+//    protected final boolean isAnonymous() {
+//        return injector.getAuthenticationProvider().isAnonymous();
+//    }
+//
+//    /**
+//     * Returns the current {@link Authentication}.
+//     *
+//     * @return The current {@link Authentication}, never {@code null}.
+//     */
+//    protected final Authentication auth() {
+//        return injector.getAuthenticationProvider().get();
+//    }
 
     /**
      * <p>

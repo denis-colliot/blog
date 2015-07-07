@@ -24,11 +24,12 @@ final class Messages {
 
     // Initialize the popup widget.
     private static final IsPopupWidget popup;
+
     private static boolean visible;
 
     static {
 
-        popup = new PopupWidget(true);
+        popup = new PopupWidget(true, false);
         popup.setContent(new SimplePanel()); // not used.
         popup.addStyleName(CSS_POPUP);
 
@@ -48,7 +49,7 @@ final class Messages {
      * Clears the current message.
      */
     private static void clear() {
-        popup.setPageMessage(null);
+        popup.setPageMessage(null, null);
     }
 
     /**

@@ -24,9 +24,11 @@ public abstract class AbstractPopupWidget<P extends IsPopupWidget> implements Is
     private static int zIndex = Z_INDEX_START_VALUE;
 
     protected final P popup;
+
     protected final boolean disableScrolling;
 
     private Widget widget;
+
     private Integer currentPopupZIndex;
 
     /**
@@ -97,7 +99,7 @@ public abstract class AbstractPopupWidget<P extends IsPopupWidget> implements Is
             }
             currentPopupZIndex = null;
             if (disableScrolling) {
-                // Reactivates scrolling only if hidding last popup.
+                // Reactivates scrolling only if hiding last popup.
                 setScrollingEnabled(zIndex == Z_INDEX_START_VALUE);
             }
         }
