@@ -49,9 +49,10 @@ public class ApplicationView implements ApplicationPresenter.View {
     public ApplicationView() {
 
         final ApplicationViewUiBinder uiBinder = GWT.create(ApplicationViewUiBinder.class);
+        uiBinder.createAndBindUi(this);
 
         // Root panel initialization.
-        RootPanel.get().add(contentPanel);
+        RootPanel.get().add(wrapperPanel);
     }
 
     /**

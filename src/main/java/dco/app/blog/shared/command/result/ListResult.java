@@ -1,9 +1,9 @@
 package dco.app.blog.shared.command.result;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 import dco.app.blog.shared.command.result.base.Result;
 import dco.app.blog.shared.util.ClientUtils;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  *         the type of the entities.
  * @author Denis
  */
-public class ListResult<E extends Serializable> implements Result {
+public class ListResult<E extends IsSerializable> implements Result {
 
     /**
      * The list.
@@ -96,7 +96,7 @@ public class ListResult<E extends Serializable> implements Result {
      *         The {@code ListResult} instance (can be {@code null}).
      * @return the given {@code result} inner list data, or {@code null} if {@code result} is {@code null}.
      */
-    public static <E extends Serializable> List<E> asList(final ListResult<E> result) {
+    public static <E extends IsSerializable> List<E> asList(final ListResult<E> result) {
         return result == null ? null : (List<E>) result.getList();
     }
 
@@ -114,7 +114,7 @@ public class ListResult<E extends Serializable> implements Result {
      * {@code null} if {@code result} is {@code null}.
      */
     @SuppressWarnings("unchecked")
-    public static <T extends Serializable, E extends Serializable> List<E> asList(final ListResult<T> result, final Class<E> clazz) {
+    public static <T extends IsSerializable, E extends IsSerializable> List<E> asList(final ListResult<T> result, final Class<E> clazz) {
         return result == null ? null : (List<E>) result.getList();
     }
 

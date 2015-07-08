@@ -1,6 +1,7 @@
 package dco.app.blog.client.ui.presenter;
 
 import com.google.inject.ImplementedBy;
+import com.google.inject.Inject;
 import dco.app.blog.client.config.Injector;
 import dco.app.blog.client.navigation.Page;
 import dco.app.blog.client.navigation.PageRequest;
@@ -23,6 +24,7 @@ public class LoginPresenter extends AbstractPagePresenter<LoginPresenter.View> {
 
     }
 
+    @Inject
     protected LoginPresenter(final View view, final Injector injector) {
         super(view, injector);
     }

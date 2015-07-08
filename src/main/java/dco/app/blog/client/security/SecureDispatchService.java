@@ -23,7 +23,7 @@ public interface SecureDispatchService extends RemoteService {
     /**
      * Remote service relative path.
      */
-    public static final String REMOTE_SERVICE_RELATIVE_PATH = "dispatch";
+    static final String REMOTE_SERVICE_RELATIVE_PATH = "dispatch";
 
     /**
      * Executes the given {@code commandExecution}.

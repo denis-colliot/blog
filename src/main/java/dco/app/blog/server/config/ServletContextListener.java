@@ -27,6 +27,8 @@ public class ServletContextListener extends GuiceServletContextListener {
         return Guice.createInjector(
                 // Persistence module.
                 new PersistenceModule(),
+                // Command-Handler module.
+                new CommandHandlerModule(),
                 // Servlet module.
                 new ServletModule());
     }

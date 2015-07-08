@@ -129,7 +129,7 @@ final class PersistenceProperties {
         } catch (final Exception e) {
             LOGGER.error("Properties loading failure with file '" + FILE + "'.", e);
             throw new UnsupportedOperationException("Persistence configuration file '" + FILE + "' " +
-                    "is missing or an error occured while reading it.");
+                    "is missing or an error occurred while reading it.");
         }
     }
 

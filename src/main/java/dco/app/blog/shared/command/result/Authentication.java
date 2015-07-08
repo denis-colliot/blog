@@ -27,7 +27,7 @@ public class Authentication implements Result {
     /**
      * The currently authenticated user's unique id.
      */
-    private Integer userId;
+    private Long userId;
 
     /**
      * The currently authenticated user's email.
@@ -80,7 +80,7 @@ public class Authentication implements Result {
      * @param language
      *         The user's language.
      */
-    public Authentication(Integer userId, String userEmail, String userName, String userFirstName, Language language) {
+    public Authentication(Long userId, String userEmail, String userName, String userFirstName, Language language) {
         this.userId = userId;
         this.userEmail = userEmail;
         this.userName = userName;
@@ -141,7 +141,7 @@ public class Authentication implements Result {
      *
      * @return The authenticated user id or {@code null} if anonymous.
      */
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 

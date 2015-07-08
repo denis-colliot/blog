@@ -15,6 +15,7 @@ public final class Authentication_ {
     public static volatile SingularAttribute<Authentication, Long> id;
     public static volatile SingularAttribute<Authentication, String> dateCreated;
     public static volatile SingularAttribute<Authentication, String> dateLastActive;
+    public static volatile SingularAttribute<Authentication, User> user;
 
     public static volatile SingularAttribute<Authentication, Date> creationDate;
     public static volatile SingularAttribute<Authentication, String> creationUser;

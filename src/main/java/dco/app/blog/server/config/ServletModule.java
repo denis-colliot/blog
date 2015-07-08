@@ -1,6 +1,8 @@
 package dco.app.blog.server.config;
 
 import com.google.inject.persist.PersistFilter;
+import dco.app.blog.client.security.SecureDispatchService;
+import dco.app.blog.server.dispatch.SecureDispatchServlet;
 import dco.app.blog.server.security.AuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +22,7 @@ public class ServletModule extends com.google.inject.servlet.ServletModule {
     /**
      * Servlet remote service endpoint.
      */
-    public static final String ENDPOINT = "/blog-api/";
+    public static final String ENDPOINT = "/";
 
     /**
      * {@inheritDoc}
@@ -34,14 +36,11 @@ public class ServletModule extends com.google.inject.servlet.ServletModule {
         filter("/*").through(PersistFilter.class);
         filter("/*").through(AuthenticationFilter.class);
 //		security("/*").through(CacheFilter.class);
-//
-//		// Servlets.
-//		serve(ENDPOINT + SecureDispatchService.REMOTE_SERVICE_RELATIVE_PATH).with(SecureDispatchServlet.class);
+
+        // Servlets.
+        serve(ENDPOINT + SecureDispatchService.REMOTE_SERVICE_RELATIVE_PATH).with(SecureDispatchServlet.class);
 //		serve("/").with(SigmahHostController.class);
 //		serve("/healthcheck").with(HealthCheckServlet.class);
 //		serve(ENDPOINT + Servlet.FILE.getPathName()).with(FileServlet.class);
-//		serve(ENDPOINT + Servlet.MANIFEST.getPathName()).with(ManifestServlet.class);
-//		serve(ENDPOINT + Servlet.EXPORT.getPathName()).with(ExportServlet.class);
-//		serve(ENDPOINT + Servlet.IMPORT.getPathName()).with(ImportServlet.class);
     }
 }

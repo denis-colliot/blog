@@ -192,7 +192,7 @@
             <version>${version.commons-fileupload}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
+            <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${version.commons-io}</version>
         </dependency>

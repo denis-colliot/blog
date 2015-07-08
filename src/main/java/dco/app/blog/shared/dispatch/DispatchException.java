@@ -1,6 +1,6 @@
 package dco.app.blog.shared.dispatch;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import dco.app.blog.client.util.ToStringBuilder;
 
 import java.io.Serializable;
 

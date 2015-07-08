@@ -7,6 +7,8 @@ import dco.app.blog.client.event.bus.EventBus;
 import dco.app.blog.client.navigation.PageManager;
 import dco.app.blog.client.security.AuthenticationProvider;
 import dco.app.blog.client.ui.presenter.ApplicationPresenter;
+import dco.app.blog.client.ui.presenter.HomePresenter;
+import dco.app.blog.client.ui.presenter.LoginPresenter;
 
 /**
  * GIN injector.
@@ -19,13 +21,12 @@ import dco.app.blog.client.ui.presenter.ApplicationPresenter;
 public interface Injector extends Ginjector {
 
     EventBus getEventBus();
-
     DispatchAsync getDispatch();
-
     PageManager getPageManager();
+    AuthenticationProvider getAuthenticationProvider();
 
     ApplicationPresenter getApplicationPresenter();
-
-    AuthenticationProvider getAuthenticationProvider();
+    LoginPresenter getLoginPresenter();
+    HomePresenter getHomePresenter();
 
 }

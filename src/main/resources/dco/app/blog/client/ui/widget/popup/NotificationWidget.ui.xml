@@ -4,20 +4,23 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
 	xmlns:g='urn:import:com.google.gwt.user.client.ui' 
 	xmlns:panel='urn:import:dco.app.blog.client.ui.widget.panel'>
-	
-	<ui:image field="notifBg" src="notification-bg.png" />
 
-	<ui:style type="fr.adlc.pegase.client.widget.popup.NotificationWidget.NotificationStyle">
+    <!--
+	<ui:image field="notifBg" src="notification-bg.png" />
+	-->
+
+	<ui:style type="dco.app.blog.client.ui.widget.popup.NotificationWidget.NotificationStyle">
 	@def marginRight 20px;
 	@def marginBottom 20px;
 	@def popupWidth 200px;
 	@def popupHeight 75px;
 	@def popupPadding 5px;
 	@def borderRadius 15px;
-	
-	@sprite .notification-popup {
+
+    /* @sprite  */
+	.notification-popup {
 		/* width and height have to be set into java code. */
-		gwt-image: 'notifBg';
+		/* gwt-image: 'notifBg'; */
 		background-repeat: repeat-x;
 		background-position: left top;
 		width: auto;

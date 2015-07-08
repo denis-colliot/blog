@@ -1,7 +1,7 @@
 package dco.app.blog.shared.command.base;
 
+import dco.app.blog.client.util.ToStringBuilder;
 import dco.app.blog.shared.command.result.base.Result;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * <p>
