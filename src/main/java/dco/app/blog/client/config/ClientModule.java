@@ -8,6 +8,7 @@ import dco.app.blog.client.event.bus.EventBus;
 import dco.app.blog.client.event.bus.EventBusImpl;
 import dco.app.blog.client.navigation.PageManager;
 import dco.app.blog.client.security.SecureDispatchAsync;
+import dco.app.blog.client.security.SecureExceptionHandler;
 
 /**
  * GIN module to bind presenters and views.

@@ -27,8 +27,10 @@ import java.util.List;
  * Parent class of all DAO implementations.
  * </p>
  *
- * @param <E> Entity type.
- * @param <K> Entity id type (primary key).
+ * @param <E>
+ *         Entity type.
+ * @param <K>
+ *         Entity id type (primary key).
  * @author Denis
  */
 public abstract class AbstractDAO<E extends Entity<K>, K extends Serializable> extends EntityManagerProvider implements DAO<E, K> {
@@ -47,6 +49,7 @@ public abstract class AbstractDAO<E extends Entity<K>, K extends Serializable> e
      * Initializes a new AbstractDAO.<br/>
      * Populates the {@link #entityClass} attribute.
      */
+    @SuppressWarnings("unchecked")
     protected AbstractDAO() {
         this.entityClass = (Class<E>) Injectors.findGenericSuperClass(getClass()).getActualTypeArguments()[0];
     }
@@ -171,7 +174,7 @@ public abstract class AbstractDAO<E extends Entity<K>, K extends Serializable> e
         }
 
         if (entity == null) {
-            return entity;
+            return null;
         }
 
         final E merged = em().merge(setEntityProperties(entity, user));
@@ -242,24 +245,27 @@ public abstract class AbstractDAO<E extends Entity<K>, K extends Serializable> e
     /**
      * Returns the given {@code user} corresponding <em>loggable</em> name.
      *
-     * @param user The user instancce, may be {@code null}.
+     * @param user
+     *         The user instancce, may be {@code null}.
      * @return The given {@code user} corresponding <em>loggable</em> name.
      */
-    protected static final String logUser(final User user) {
+    protected static String logUser(final User user) {
         return user != null ? user.getFirstName() + ' ' + user.getName() : "anonymous";
     }
 
     /**
      * Sets {@code creation} or {@code update} properties on the given {@code entity}.
      *
-     * @param entity The entity to update.
-     * @param user   The user processing the action, may be {@code null}.
+     * @param entity
+     *         The entity to update.
+     * @param user
+     *         The user processing the action, may be {@code null}.
      * @return The udpated {@code entity}.
      */
-    protected static final <E extends Entity<?>> E setEntityProperties(final E entity, final User user) {
+    protected static <E extends Entity<?>> E setEntityProperties(final E entity, final User user) {
 
         if (entity == null) {
-            return entity;
+            return null;
         }
 
         if (entity.getId() == null) {
@@ -280,7 +286,8 @@ public abstract class AbstractDAO<E extends Entity<K>, K extends Serializable> e
      * Executes the given JPQL or native SQL {@code updateQuery}.<br/>
      * Checks the transaction before execution (see {@link #checkTransaction(EntityManager)}).
      *
-     * @param updateQuery The update JPQL or native SQL query.
+     * @param updateQuery
+     *         The update JPQL or native SQL query.
      * @return the number of elements updated/deleted.
      */
     @Transactional
@@ -299,7 +306,8 @@ public abstract class AbstractDAO<E extends Entity<K>, K extends Serializable> e
      * Checks if active transaction is running. If so, given {@code em} is flushed in order to synchronize persistence
      * context.
      *
-     * @param em The entity manager.
+     * @param em
+     *         The entity manager.
      */
     private static void checkTransaction(final EntityManager em) {
 

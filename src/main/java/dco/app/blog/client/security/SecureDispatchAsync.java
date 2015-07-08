@@ -1,10 +1,14 @@
 package dco.app.blog.client.security;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import dco.app.blog.client.dispatch.AbstractDispatchAsync;
 import dco.app.blog.client.event.bus.EventBus;
+import dco.app.blog.client.navigation.PageManager;
+import dco.app.blog.client.navigation.RequestParameter;
+import dco.app.blog.client.navigation.Zone;
 import dco.app.blog.client.ui.widget.Loadable;
 import dco.app.blog.shared.command.base.Command;
 import dco.app.blog.shared.command.result.base.Result;
@@ -14,7 +18,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.util.*;
 
 /**
- * This class is the default implementation of {@link dco.app.blog.server.dispatch.Dispatch}, which is essentially the client-side access
+ * This class is the default implementation of {@link dco.app.blog.server.dispatch.Dispatch}, which is essentially the
+ * client-side access
  * to the {@link dco.app.blog.server.dispatch.Dispatch} class on the server-side.
  *
  * @author Denis
@@ -47,7 +52,9 @@ public class SecureDispatchAsync extends AbstractDispatchAsync {
     public static final class CommandExecution<C extends Command<R>, R extends Result> implements Command<R> {
 
         private String authToken;
+
         private C command;
+
         private String currentPageToken;
 
         /**
@@ -267,7 +274,7 @@ public class SecureDispatchAsync extends AbstractDispatchAsync {
 
         // Updating application loader state.
         if (eventBus != null) {
-            eventBus.updateZoneRequest(Zone.APP_LOADER.requestWith(RequestParameter.CONTENT, ClientUtils.isNotEmpty(commandsMap)));
+            eventBus.updateZoneRequest(Zone.APP_LOADER.requestWith(RequestParameter.REQUEST, ClientUtils.isNotEmpty(commandsMap)));
         }
     }
 

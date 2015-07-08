@@ -30,8 +30,8 @@ public class User extends AbstractEntity<Long> {
     @Column(name = "us_email", nullable = true)
     private String email;
 
-    @Column(name = "us_active", nullable = false)
-    private boolean active;
+    @Column(name = "us_active", nullable = true)
+    private Boolean active;
 
     /**
      * {@inheritDoc}
@@ -86,11 +86,11 @@ public class User extends AbstractEntity<Long> {
         this.email = email;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 }

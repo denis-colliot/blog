@@ -16,7 +16,7 @@ public enum Zone implements IsSerializable {
 
     AUTH_BANNER("auth-banner"),
     MENU_BANNER("menu-banner"),
-    MESSAGE_BANNER("message-banner");
+    MESSAGE_BANNER("message-banner"), ;
 
     /**
      * The zone token.

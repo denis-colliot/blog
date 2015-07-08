@@ -1,6 +1,7 @@
 package dco.app.blog.server.servlet.base;
 
 import dco.app.blog.server.model.User;
+import dco.app.blog.server.util.Languages;
 import dco.app.blog.shared.Language;
 
 import javax.servlet.http.HttpServletRequest;

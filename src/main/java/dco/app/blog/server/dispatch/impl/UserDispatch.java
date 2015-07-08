@@ -15,6 +15,7 @@ import dco.app.blog.shared.command.base.Command;
 import dco.app.blog.shared.command.result.base.Result;
 import dco.app.blog.shared.dispatch.CommandException;
 import dco.app.blog.shared.dispatch.DispatchException;
+import dco.app.blog.shared.dispatch.UnsupportedCommandException;
 import org.apache.commons.lang3.time.StopWatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
