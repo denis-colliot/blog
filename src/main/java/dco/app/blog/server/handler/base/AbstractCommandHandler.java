@@ -20,7 +20,7 @@ import java.lang.reflect.Type;
  *         The command type.
  * @param <R>
  *         The result type.
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  */
 public abstract class AbstractCommandHandler<C extends Command<R>, R extends Result> extends EntityManagerProvider implements CommandHandler<C, R> {
 

@@ -40,7 +40,7 @@ public abstract class AbstractCommandHandlerModule extends AbstractModule {
      *         The command type.
      * @param <R>
      *         The command result type.
-     * @author Denis Colliot (dcolliot@ideia.fr)
+     * @author Denis
      */
     private static class CommandHandlerMapImpl<C extends Command<R>, R extends Result> implements CommandHandlerMap<C, R> {
 

@@ -22,7 +22,7 @@ public class ServletModule extends com.google.inject.servlet.ServletModule {
     /**
      * Servlet remote service endpoint.
      */
-    public static final String ENDPOINT = "/bog/";
+    public static final String ENDPOINT = "/blog/";
 
     /**
      * {@inheritDoc}

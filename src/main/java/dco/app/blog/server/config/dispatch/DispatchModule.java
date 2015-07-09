@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * respectively), pass the override values into the constructor for this module and ensure it is installed
  * <b>before</b>  any {@link AbstractCommandHandlerModule} instances.
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  */
 final class DispatchModule extends AbstractModule {
 

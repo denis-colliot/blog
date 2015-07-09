@@ -30,7 +30,9 @@ public class ServletContextListener extends GuiceServletContextListener {
                 // Command-Handler module.
                 new CommandHandlerModule(),
                 // Servlet module.
-                new ServletModule());
+                new ServletModule(),
+                // Security module.
+                new SecurityModule());
     }
 
 }

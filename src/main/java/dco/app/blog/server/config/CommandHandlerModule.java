@@ -12,8 +12,7 @@ import dco.app.blog.shared.command.SecureNavigationCommand;
  * Simply bind command classes to their corresponding handler class.
  * </p>
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
- * @author Maxime Lombard (mlombard@ideia.fr)
+ * @author Denis
  */
 public class CommandHandlerModule extends AbstractCommandHandlerModule {
 

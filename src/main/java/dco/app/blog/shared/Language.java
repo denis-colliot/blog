@@ -13,10 +13,10 @@ import dco.app.blog.shared.util.ClientUtils;
  * If a new language should be supported by the application, make sure to update this enum.
  * </p>
  * <p>
- * See server-side {@link org.sigmah.server.util.Languages} utility class.
+ * See server-side {@link dco.app.blog.server.util.Languages} utility class.
  * </p>
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  */
 public enum Language implements IsSerializable {
 

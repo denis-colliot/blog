@@ -27,14 +27,14 @@ import java.util.Map;
 /**
  * Dispatch custom implementation.
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  */
 public class UserDispatch implements Dispatch {
 
     /**
      * Execution context provided to handlers in order to execute sub-commands.
      *
-     * @author Denis Colliot (dcolliot@ideia.fr)
+     * @author Denis
      */
     public static final class UserExecutionContext extends ServletExecutionContext implements ExecutionContext {
 

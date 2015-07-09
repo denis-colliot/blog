@@ -7,7 +7,7 @@ import dco.app.blog.shared.command.result.SecureNavigationResult;
 /**
  * Secure navigation command.
  *
- * @author Denis Colliot (denis.colliot@zenika.com)
+ * @author Denis
  */
 public class SecureNavigationCommand extends AbstractCommand<SecureNavigationResult> {
 

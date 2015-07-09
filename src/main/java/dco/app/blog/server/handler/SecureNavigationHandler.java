@@ -11,7 +11,7 @@ import dco.app.blog.shared.dispatch.CommandException;
 /**
  * Created on 08/07/15.
  *
- * @author Denis Colliot (denis.colliot@zenika.com)
+ * @author Denis
  */
 public class SecureNavigationHandler extends AbstractCommandHandler<SecureNavigationCommand, SecureNavigationResult> {
 

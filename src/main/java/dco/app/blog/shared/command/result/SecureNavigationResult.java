@@ -5,7 +5,7 @@ import dco.app.blog.shared.command.result.base.Result;
 /**
  * {@link dco.app.blog.shared.command.SecureNavigationCommand} corresponding result.
  *
- * @author Denis Colliot (denis.colliot@zenika.com)
+ * @author Denis
  */
 public class SecureNavigationResult implements Result {
 

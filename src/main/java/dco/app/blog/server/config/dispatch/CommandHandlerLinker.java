@@ -12,7 +12,7 @@ import java.util.List;
  * This class links any registered {@link dco.app.blog.server.dispatch.CommandHandler} instances with the default
  * {@link CommandHandlerRegistry}.
  *
- * @author Denis Colliot (dcolliot@ideia.fr)
+ * @author Denis
  */
 final class CommandHandlerLinker {
 
