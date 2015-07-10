@@ -19,9 +19,8 @@
     <set-configuration-property name="log_pattern" value="[%-5p] {%d{yyyy/MM/dd HH:mm:ss.SSS}} %C - %m%n" />
     <set-property name="log_DivLogger" value="DISABLED" />
 
-    <!-- Material Design.
+    <!-- Material Design. -->
     <inherits name="gwt.material.design.GwtMaterialDesign" />
-    -->
 
     <!-- Default locale. -->
     <extend-property name="locale" values="fr,en" />
@@ -35,6 +34,8 @@
     <!-- Paths for translatable code. -->
     <source path="client" />
     <source path="shared" />
+
+    <stylesheet src="styles/styles.css"/>
 
     <!-- SuperDevMode configuration. -->
     <add-linker name="xsiframe" />

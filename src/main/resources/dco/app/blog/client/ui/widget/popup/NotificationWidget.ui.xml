@@ -10,12 +10,12 @@
 	-->
 
 	<ui:style type="dco.app.blog.client.ui.widget.popup.NotificationWidget.NotificationStyle">
-	@def marginRight 20px;
-	@def marginBottom 20px;
-	@def popupWidth 200px;
-	@def popupHeight 75px;
-	@def popupPadding 5px;
-	@def borderRadius 15px;
+	@def MARGIN_RIGHT 20px;
+	@def MARGIN_BOTTOM 20px;
+	@def POPUP_WIDTH 200px;
+	@def POPUP_HEIGHT 75px;
+	@def POPUP_PADDING 5px;
+	@def BORDER_RADIUS 15px;
 
     /* @sprite  */
 	.notification-popup {

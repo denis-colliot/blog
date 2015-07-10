@@ -11,7 +11,8 @@ import dco.app.blog.client.ui.widget.Loadable;
  * <p/>
  * <b>Rules to add a new view:</b>
  * <ol>
- * <li>Define a new presenter managing the view ; see {@link AbstractPresenter} javadoc.</li>
+ * <li>Define a new presenter managing the view ; see {@link dco.app.blog.client.ui.presenter.base.AbstractPresenter}
+ * javadoc.</li>
  * <li>Create a new class inheriting {@link AbstractView} with {@link com.google.inject.Singleton} annotation
  * (<u>crucial</u>).</li>
  * <li>View implementation should use {@code Composite.initWidget(IsWidget)} in the {@link #initialize()} method.</li>

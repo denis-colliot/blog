@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.*;
 import com.google.inject.Singleton;
 import dco.app.blog.client.navigation.Zone;
 import dco.app.blog.client.ui.presenter.ApplicationPresenter;
+import dco.app.blog.client.ui.view.base.AbstractView;
 import dco.app.blog.client.ui.view.base.ViewInterface;
 import dco.app.blog.client.ui.widget.Loadable;
 import dco.app.blog.client.util.MessageType;
@@ -25,7 +26,7 @@ import java.util.Map;
  * @author Denis
  */
 @Singleton
-public class ApplicationView implements ApplicationPresenter.View {
+public class ApplicationView extends AbstractView implements ApplicationPresenter.View {
 
     /**
      * {@link com.google.gwt.uibinder.client.UiBinder} interface adapted to {@link ApplicationView}.
@@ -41,7 +42,7 @@ public class ApplicationView implements ApplicationPresenter.View {
     HTML messageLabel;
 
     @UiField
-    Panel contentPanel;
+    HasOneWidget contentPanel;
 
     /**
      * Instantiates the application frame.
@@ -49,10 +50,10 @@ public class ApplicationView implements ApplicationPresenter.View {
     public ApplicationView() {
 
         final ApplicationViewUiBinder uiBinder = GWT.create(ApplicationViewUiBinder.class);
-        uiBinder.createAndBindUi(this);
+        initWidget(uiBinder.createAndBindUi(this));
 
         // Root panel initialization.
-        RootPanel.get().add(wrapperPanel);
+        RootPanel.get().add(this);
     }
 
     /**
@@ -125,8 +126,7 @@ public class ApplicationView implements ApplicationPresenter.View {
      */
     @Override
     public void showPresenter(final IsWidget presenterWidget, boolean fullPage) {
-        contentPanel.clear();
-        contentPanel.add(presenterWidget.asWidget());
+        contentPanel.setWidget(presenterWidget.asWidget());
     }
 
     /**

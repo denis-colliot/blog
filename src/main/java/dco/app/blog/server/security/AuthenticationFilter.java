@@ -50,7 +50,7 @@ public class AuthenticationFilter implements Filter {
 
         // TODO Authentication security implementation.
 
-        LOGGER.trace("(to remove) Posts: {}", postDAO.find(null));
+        LOGGER.trace("[_TEST ONLY: TO REMOVE_] Posts: {}", postDAO.find(null));
 
         filterChain.doFilter(servletRequest, servletResponse);
     }

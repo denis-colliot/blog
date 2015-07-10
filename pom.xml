@@ -48,7 +48,7 @@
         <!-- Dependencies versions. -->
         <version.junit>4.11</version.junit>
         <version.gwt>2.7.0</version.gwt>
-        <version.gwt-material>1.3</version.gwt-material>
+        <version.gwt-material>1.3.2</version.gwt-material>
         <version.guice>4.0-beta5</version.guice>
         <version.gin>2.1.2</version.gin>
         <version.commons-fileupload>1.3.1</version.commons-fileupload>
