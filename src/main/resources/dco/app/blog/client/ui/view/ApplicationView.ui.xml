@@ -5,51 +5,48 @@
 	xmlns:g='urn:import:com.google.gwt.user.client.ui'
     xmlns:m="urn:import:gwt.material.design.client.ui">
 
-    <g:HTMLPanel ui:field="wrapperPanel">
+    <ui:style>
+        header, main, footer {
+            padding-left: 300px;
+        }
+        .container {
+            padding: 35px;
+        }
+    </ui:style>
 
-        <!--
-        <m:MaterialNavBar align="right" color="blue">
-            <m:nav>
-                <m:MaterialLink icon="mdi-social-whatshot" textColor="white" tooltip="My personal blog"/>
-            </m:nav>
-            <m:nav>
-                <m:MaterialLink icon="mdi-navigation-apps" textColor="white" tooltip="Apps"/>
-            </m:nav>
-            <m:nav>
-                <m:MaterialLink icon="mdi-social-notifications" textColor="white" tooltip="Notification"/>
-            </m:nav>
+    <g:HTMLPanel>
+        <m:MaterialNavBar ui:field="navBar" wave="light" align="right" color="blue" sideBar="fixed" sideBarWidth="300">
+            <!--<m:nav><m:MaterialSearch /></m:nav>-->
+            <m:nav><m:MaterialLink ui:field="navLinkTrips" icon="mdi-maps-flight" textColor="white" tooltip="Trips" /></m:nav>
+            <m:nav><m:MaterialLink ui:field="navLinkTvShows" icon="mdi-hardware-tv" textColor="white" tooltip="TV Shows" /></m:nav>
+            <m:nav><m:MaterialLink ui:field="navLinkMe" icon="mdi-action-account-circle" textColor="white" tooltip="Who am I?" /></m:nav>
             <m:sidebaritem>
-                <m:MaterialLink icon="mdi-social-whatshot" iconPosition="left" text="Starter" textColor="blue"/>
+                <m:MaterialTopNav profileName="Denis Colliot"
+                                  profileImageUrl="https://lh5.googleusercontent.com/-A5YAkowhfpI/VabUR4x_VzI/AAAAAAAADu0/3jYNyNCJjYY/w872-h875-no/IMG_0822.JPG"
+                                  url="http://2.bp.blogspot.com/-x4D3EPELYRU/VMHu52a4qUI/AAAAAAAAHek/EmnIgqTtu_U/s0/fon116%2B2160x1920.png"
+                                  textColor="white"
+                                  type="sidebar">
+                    <m:child>
+                        <m:MaterialLink text="denis.colliot@gmail.com" href="mailto:denis.colliot@gmail.com"
+                                        textColor="white" fontSize="0.9"
+                                        icon="mdi-communication-email" iconPosition="right" />
+                    </m:child>
+                </m:MaterialTopNav>
             </m:sidebaritem>
-            <m:sidebaritem>
-                <m:MaterialLink icon="mdi-navigation-apps" iconPosition="left" text="Apps" textColor="blue"/>
-            </m:sidebaritem>
-            <m:sidebaritem>
-                <m:MaterialLink icon="mdi-social-notifications" iconPosition="left" text="Notifications" textColor="blue"/>
-            </m:sidebaritem>
+            <m:sidebaritem><m:MaterialLink ui:field="menuLinkTrips" icon="mdi-maps-flight" iconPosition="left" text="Trips" textColor="blue" /></m:sidebaritem>
+            <m:sidebaritem><m:MaterialLink ui:field="menuLinkTvShows" icon="mdi-hardware-tv" iconPosition="left" text="TV Shows" textColor="blue" /></m:sidebaritem>
+            <m:sidebaritem><m:MaterialLink ui:field="menuLinkMe" icon="mdi-action-account-circle" iconPosition="left" text="Who am I?" textColor="blue" /></m:sidebaritem>
         </m:MaterialNavBar>
-        -->
 
-        <g:HTML ui:field="messageLabel" />
+        <m:MaterialContainer>
+            <g:HTML ui:field="message" />
 
-        <m:MaterialPanel type="container">
-            <!-- Dynamic content (views). -->
-            <g:SimplePanel ui:field="contentPanel" />
-        </m:MaterialPanel>
+            <g:SimplePanel ui:field="container" styleName="{style.container}">
+                <!-- Dynamic content. -->
+            </g:SimplePanel>
+        </m:MaterialContainer>
 
-        <m:MaterialFloatingContainer>
-            <m:initial>
-                <m:MaterialButton type="floating" waves="light" size="large" color="red" icon="mdi-content-add" tooltip="Create" tooltipLocation="left"/>
-            </m:initial>
-            <m:item>
-                <m:MaterialButton type="floating" waves="light" color="yellow" icon="mdi-communication-email" tooltip="Email" tooltipLocation="left"/>
-            </m:item>
-            <m:item>
-                <m:MaterialButton type="floating" waves="light" color="blue" icon="mdi-image-palette" tooltip="Theme" tooltipLocation="left"/>
-            </m:item>
-        </m:MaterialFloatingContainer>
-
-        <m:MaterialFooter color="blue" copyright="© 2015 Copyright DC's Blog" type="fixed"></m:MaterialFooter>
-
+        <m:MaterialFooter color="blue" copyright="© 2015 Denis Colliot" type="fixed" />
     </g:HTMLPanel>
+
 </ui:UiBinder>

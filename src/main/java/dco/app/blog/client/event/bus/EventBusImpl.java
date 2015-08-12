@@ -28,7 +28,7 @@ public class EventBusImpl extends HandlerManager implements EventBus {
     /**
      * Page where anonymous users are redirected using "{@code navigate(null)}".
      */
-    private static final Page DEFAULT_ANONYMOUS_PAGE = Page.LOGIN;
+    private static final Page DEFAULT_ANONYMOUS_PAGE = Page.TRIPS;
 
     /**
      * Page where authenticated users are redirected using "{@code navigate(null)}".
@@ -206,11 +206,11 @@ public class EventBusImpl extends HandlerManager implements EventBus {
             accessedPageEvent = event;
 
         } else if (injector.getAuthenticationProvider().isAnonymous()) {
-            // Page is invalid and user anonymous: redirecting user to login page.
+            // Page is invalid and user anonymous: redirecting user to default anonymous page.
             accessedPageEvent = new PageRequestEvent(DEFAULT_ANONYMOUS_PAGE);
 
         } else {
-            // Page is invalid and user authenticated: redirecting user to home page.
+            // Page is invalid and user authenticated: redirecting user to default home page.
             accessedPageEvent = new PageRequestEvent(DEFAULT_AUTHENTICATED_PAGE);
         }
 

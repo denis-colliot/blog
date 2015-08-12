@@ -4,6 +4,7 @@ import com.google.inject.persist.PersistFilter;
 import dco.app.blog.client.security.SecureDispatchService;
 import dco.app.blog.server.dispatch.SecureDispatchServlet;
 import dco.app.blog.server.security.AuthenticationFilter;
+import dco.app.blog.server.servlet.filter.CacheFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +36,7 @@ public class ServletModule extends com.google.inject.servlet.ServletModule {
         // Filters.
         filter("/*").through(PersistFilter.class);
         filter("/*").through(AuthenticationFilter.class);
-//		security("/*").through(CacheFilter.class);
+        filter("/*").through(CacheFilter.class);
 
         // Servlets.
         serve(ENDPOINT + SecureDispatchService.REMOTE_SERVICE_RELATIVE_PATH).with(SecureDispatchServlet.class);

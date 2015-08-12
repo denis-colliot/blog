@@ -6,9 +6,7 @@ import dco.app.blog.client.dispatch.DispatchAsync;
 import dco.app.blog.client.event.bus.EventBus;
 import dco.app.blog.client.navigation.PageManager;
 import dco.app.blog.client.security.AuthenticationProvider;
-import dco.app.blog.client.ui.presenter.ApplicationPresenter;
-import dco.app.blog.client.ui.presenter.HomePresenter;
-import dco.app.blog.client.ui.presenter.LoginPresenter;
+import dco.app.blog.client.ui.presenter.*;
 
 /**
  * GIN injector.
@@ -28,5 +26,8 @@ public interface Injector extends Ginjector {
     ApplicationPresenter getApplicationPresenter();
     LoginPresenter getLoginPresenter();
     HomePresenter getHomePresenter();
+
+    TripsPresenter getTripsPresenter();
+    TvShowsPresenter getTvShowsPresenter();
 
 }

@@ -55,7 +55,6 @@ public class Blog implements EntryPoint {
         if (Log.isDebugEnabled()) {
             Log.debug("Application > Client init end.");
         }
-
     }
 
     /**
@@ -73,6 +72,8 @@ public class Blog implements EntryPoint {
         // Pages.
         injector.getLoginPresenter();
         injector.getHomePresenter();
+        injector.getTripsPresenter();
+        injector.getTvShowsPresenter();
 
         // Propagates the network state.
         injector.getPageManager().fireCurrentPlace();

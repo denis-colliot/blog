@@ -1,6 +1,7 @@
 package dco.app.blog.client.navigation;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
+import dco.app.blog.client.i18n.I18N;
 import dco.app.blog.shared.property.PropertyName;
 import dco.app.blog.shared.util.ClientUtils;
 
@@ -12,7 +13,10 @@ import dco.app.blog.shared.util.ClientUtils;
 public enum Page implements IsSerializable {
 
     HOME("home"),
-    LOGIN("login");
+    LOGIN("login"),
+    TRIPS("trips"),
+    TV_SHOWS("tv-shows"),
+    ME("me");
 
     private final String parentKey;
 
@@ -192,6 +196,14 @@ public enum Page implements IsSerializable {
         }
 
         switch (page) {
+            case LOGIN:
+                return I18N.CONSTANTS.page_title_login();
+            case HOME:
+                return I18N.CONSTANTS.page_title_home();
+            case TRIPS:
+                return I18N.CONSTANTS.page_title_trips();
+            case TV_SHOWS:
+                return I18N.CONSTANTS.page_title_tvShows();
             default:
                 return PropertyName.error(page.token);
         }

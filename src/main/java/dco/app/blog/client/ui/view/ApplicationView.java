@@ -1,6 +1,7 @@
 package dco.app.blog.client.ui.view;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
@@ -12,6 +13,8 @@ import dco.app.blog.client.ui.view.base.AbstractView;
 import dco.app.blog.client.ui.view.base.ViewInterface;
 import dco.app.blog.client.ui.widget.Loadable;
 import dco.app.blog.client.util.MessageType;
+import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialNavBar;
 
 import java.util.Map;
 
@@ -26,42 +29,55 @@ import java.util.Map;
  * @author Denis
  */
 @Singleton
-public class ApplicationView extends AbstractView implements ApplicationPresenter.View {
+public final class ApplicationView extends AbstractView implements ApplicationPresenter.View {
 
     /**
      * {@link com.google.gwt.uibinder.client.UiBinder} interface adapted to {@link ApplicationView}.
      */
     @UiTemplate("ApplicationView.ui.xml")
-    static interface ApplicationViewUiBinder extends UiBinder<Widget, ApplicationView> {
+    static interface ViewUiBinder extends UiBinder<Widget, ApplicationView> {
     }
 
     @UiField
-    Panel wrapperPanel;
+    HTML message;
 
     @UiField
-    HTML messageLabel;
+    HasOneWidget container;
 
     @UiField
-    HasOneWidget contentPanel;
+    MaterialNavBar navBar;
+
+    @UiField
+    MaterialLink navLinkTrips;
+
+    @UiField
+    MaterialLink navLinkTvShows;
+
+    @UiField
+    MaterialLink navLinkMe;
+
+    @UiField
+    MaterialLink menuLinkTrips;
+
+    @UiField
+    MaterialLink menuLinkTvShows;
+
+    @UiField
+    MaterialLink menuLinkMe;
 
     /**
      * Instantiates the application frame.
      */
     public ApplicationView() {
-
-        final ApplicationViewUiBinder uiBinder = GWT.create(ApplicationViewUiBinder.class);
+        final ViewUiBinder uiBinder = GWT.create(ViewUiBinder.class);
         initWidget(uiBinder.createAndBindUi(this));
 
-        // Root panel initialization.
         RootPanel.get().add(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Widget asWidget() {
-        return wrapperPanel;
+        return RootPanel.get();
     }
 
     /**
@@ -126,7 +142,7 @@ public class ApplicationView extends AbstractView implements ApplicationPresente
      */
     @Override
     public void showPresenter(final IsWidget presenterWidget, boolean fullPage) {
-        contentPanel.setWidget(presenterWidget.asWidget());
+        container.setWidget(presenterWidget.asWidget());
     }
 
     /**
@@ -134,7 +150,7 @@ public class ApplicationView extends AbstractView implements ApplicationPresente
      */
     @Override
     public void setPageMessageVisible(boolean visible) {
-        messageLabel.setVisible(visible);
+        message.setVisible(visible);
     }
 
     /**
@@ -142,8 +158,42 @@ public class ApplicationView extends AbstractView implements ApplicationPresente
      */
     @Override
     public void setPageMessage(String html, MessageType type) {
-        messageLabel.setHTML(html);
-        MessageType.applyStyleName(messageLabel, type);
+        message.setHTML(html);
+        MessageType.applyStyleName(message, type);
     }
 
+    @Override
+    public MaterialNavBar getNavBar() {
+        return navBar;
+    }
+
+    @Override
+    public HasClickHandlers getNavLinkTrips() {
+        return navLinkTrips;
+    }
+
+    @Override
+    public HasClickHandlers getNavLinkTvShows() {
+        return navLinkTvShows;
+    }
+
+    @Override
+    public HasClickHandlers getNavLinkMe() {
+        return navLinkMe;
+    }
+
+    @Override
+    public HasClickHandlers getMenuLinkTrips() {
+        return menuLinkTrips;
+    }
+
+    @Override
+    public HasClickHandlers getMenuLinkTvShows() {
+        return menuLinkTvShows;
+    }
+
+    @Override
+    public HasClickHandlers getMenuLinkMe() {
+        return menuLinkMe;
+    }
 }

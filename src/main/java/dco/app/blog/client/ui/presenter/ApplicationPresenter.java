@@ -1,5 +1,8 @@
 package dco.app.blog.client.ui.presenter;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.inject.ImplementedBy;
 import com.google.inject.Inject;
@@ -15,6 +18,7 @@ import dco.app.blog.client.ui.view.base.ViewInterface;
 import dco.app.blog.client.ui.view.base.ViewPopupInterface;
 import dco.app.blog.client.util.MessageType;
 import dco.app.blog.shared.util.ClientUtils;
+import gwt.material.design.client.ui.MaterialNavBar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +62,20 @@ public final class ApplicationPresenter extends AbstractPresenter<ApplicationPre
          */
         void initZones(Map<Zone, ViewInterface> zoneViews);
 
+        MaterialNavBar getNavBar();
+
+        HasClickHandlers getNavLinkTrips();
+
+        HasClickHandlers getNavLinkTvShows();
+
+        HasClickHandlers getNavLinkMe();
+
+        HasClickHandlers getMenuLinkTrips();
+
+        HasClickHandlers getMenuLinkTvShows();
+
+        HasClickHandlers getMenuLinkMe();
+
     }
 
     /**
@@ -89,7 +107,26 @@ public final class ApplicationPresenter extends AbstractPresenter<ApplicationPre
      */
     @Override
     public void bind() {
+
+        view.getNavLinkTrips().addClickHandler(buildNavHandler(Page.TRIPS));
+        view.getNavLinkTvShows().addClickHandler(buildNavHandler(Page.TV_SHOWS));
+        view.getNavLinkMe().addClickHandler(buildNavHandler(Page.ME));
+
+        view.getMenuLinkTrips().addClickHandler(buildNavHandler(Page.TRIPS));
+        view.getMenuLinkTvShows().addClickHandler(buildNavHandler(Page.TV_SHOWS));
+        view.getMenuLinkMe().addClickHandler(buildNavHandler(Page.ME));
+
         // Add global application bindings here.
+    }
+
+    private ClickHandler buildNavHandler(final Page page) {
+        return new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                eventBus.navigate(page);
+                view.getNavBar().hide();
+            }
+        };
     }
 
     /**
@@ -114,6 +151,7 @@ public final class ApplicationPresenter extends AbstractPresenter<ApplicationPre
         if (presenter.getView() instanceof ViewPopupInterface) {
 
             // Popup presenter's view case.
+
             final ViewPopupInterface viewPopup = (ViewPopupInterface) presenter.getView();
             viewPopup.setPopupTitle(pageTitle);
             viewPopup.center();
@@ -140,8 +178,8 @@ public final class ApplicationPresenter extends AbstractPresenter<ApplicationPre
      * @param pageTitle
      *         The new page title.
      */
-    public void setPageTitle(String pageTitle) {
-        // No page title area defined yet.
+    public void setPageTitle(final String pageTitle) {
+        view.getNavBar().setText(pageTitle);
     }
 
     /**
