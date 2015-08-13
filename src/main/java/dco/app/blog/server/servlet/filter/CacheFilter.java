@@ -12,8 +12,7 @@ import java.util.Date;
 /**
  * <p>
  * Instructs browsers to cache application ressources "until the sun explodes" (or actually a year). Exceptions are
- * made
- * for files containing the token ".nocache."
+ * made for files containing the token ".nocache."
  * </p>
  * <p>
  * See http://www.infoq.com/articles/gwt-high-ajax<br/>
@@ -83,8 +82,6 @@ public class CacheFilter implements Filter {
         final HttpServletRequest httpRequest = (HttpServletRequest) request;
         final HttpServletResponse httpResponse = (HttpServletResponse) response;
         final String requestURI = httpRequest.getRequestURI();
-
-        StringUtils.containsAny("", "");
 
         if (containsAny(requestURI, CACHE_FILTERS)) {
             // Cached resource.

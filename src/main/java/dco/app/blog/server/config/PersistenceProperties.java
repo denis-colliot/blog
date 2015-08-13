@@ -1,9 +1,11 @@
 package dco.app.blog.server.config;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -17,9 +19,9 @@ final class PersistenceProperties {
     private static final Logger LOGGER = LoggerFactory.getLogger(PersistenceProperties.class);
 
     /**
-     * Persistence local properties file name.
+     * PAAS system environment properties prefix.
      */
-    private static final String FILE = "persistence.properties";
+    private static final String PAAS_ENV_PREFIX = "CU_";
 
     /**
      * File corresponding {@link java.util.Properties}.
@@ -38,7 +40,7 @@ final class PersistenceProperties {
      */
     public static Properties init() {
 
-        LOGGER.info("Initializing persistence properties.");
+        LOGGER.info("Initializing persistence properties ; System environment: {}", System.getenv());
 
         final Properties properties = new Properties();
 
@@ -47,24 +49,31 @@ final class PersistenceProperties {
         // http://www.mchange.com/projects/c3p0/
         properties.setProperty("hibernate.connection.provider_class", "org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider");
 
-        if (System.getenv().containsKey("CU_DATABASE_DNS_1")) {
+        if (isProductionEnvironment()) {
 
             // --
             // Production environment (hardcoded).
             // --
 
-            LOGGER.info("Production environment ; environment: {}", System.getenv());
+            LOGGER.info("Production environment ; using system environment properties.");
 
-            final String host = System.getenv().get("CU_DATABASE_DNS_1");
-            final String username = System.getenv().get("CU_DATABASE_USER_1");
-            final String password = System.getenv().get("CU_DATABASE_PASSWORD_1");
-            final String dbName = System.getenv().get("CU_DATABASE_NAME");
+            loadProperties("cloudunit.properties");
+
+            final String host = System.getenv().get(PROPERTIES.getProperty("env.database.host"));
+            final String username = System.getenv().get(PROPERTIES.getProperty("env.database.user"));
+            final String password = System.getenv().get(PROPERTIES.getProperty("env.database.password"));
+            final String dbName = System.getenv().get(PROPERTIES.getProperty("env.database.name"));
+
+            final String dialect = PROPERTIES.getProperty("hibernate.dialect");
+            final String driver = PROPERTIES.getProperty("jdbc.driver");
+            final String url = PROPERTIES.getProperty("jdbc.url");
 
             LOGGER.info("Host: '{}' ; Username: '{}' ; Password: '{}' ; DbName: '{}'", host, username, password, dbName);
+            LOGGER.info("Dialect: '{}' ; Driver: '{}' ; Url: '{}'", dialect, driver, url);
 
-            properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-            properties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-            properties.setProperty("hibernate.connection.url", "jdbc:mysql://" + host + ":3306/" + dbName);
+            properties.setProperty("hibernate.dialect", dialect);
+            properties.setProperty("hibernate.connection.driver_class", driver);
+            properties.setProperty("hibernate.connection.url", url.replace("{host}", host).replace("{dbName}", dbName));
             properties.setProperty("hibernate.connection.username", username);
             properties.setProperty("hibernate.connection.password", password);
 
@@ -87,7 +96,7 @@ final class PersistenceProperties {
 
             LOGGER.info("Debug environment ; loading persistence properties file.");
 
-            loadLocalConfiguration();
+            loadProperties("persistence.properties");
 
             // Mandatory properties.
             setMandatory(properties, "hibernate.dialect");
@@ -115,20 +124,38 @@ final class PersistenceProperties {
     }
 
     /**
-     * Loads the local {@code persistence.properties} file and populates {@link #PROPERTIES}.
+     * <p>Returns if the current environment is the production environment.</p>
+     * <p>The method simply look for {@code CU_*} environment properties among {@code System.getenv()}.</p>
      */
-    private static void loadLocalConfiguration() {
-        try (final InputStream is = PersistenceModule.class.getClassLoader().getResourceAsStream(FILE)) {
+    private static boolean isProductionEnvironment() {
 
-            LOGGER.info("Loading properties from file '{}'.", FILE);
+        for (final Map.Entry<String, String> env : System.getenv().entrySet()) {
+            if (StringUtils.startsWithIgnoreCase(env.getKey(), PAAS_ENV_PREFIX)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Loads the given {@code file} and populates {@link #PROPERTIES}.
+     *
+     * @param file
+     *         The file to read.
+     */
+    private static void loadProperties(final String file) {
+        try (final InputStream is = PersistenceModule.class.getClassLoader().getResourceAsStream(file)) {
+
+            LOGGER.info("Loading properties from file '{}'.", file);
 
             PROPERTIES.load(is);
 
             LOGGER.trace("Loaded properties: {}", PROPERTIES);
 
         } catch (final Exception e) {
-            LOGGER.error("Properties loading failure with file '" + FILE + "'.", e);
-            throw new UnsupportedOperationException("Persistence configuration file '" + FILE + "' " +
+            LOGGER.error("Properties loading failure with file '" + file + "'.", e);
+            throw new UnsupportedOperationException("Persistence configuration file '" + file + "' " +
                     "is missing or an error occurred while reading it.");
         }
     }
