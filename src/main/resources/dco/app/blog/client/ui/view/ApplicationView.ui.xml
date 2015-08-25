@@ -46,7 +46,9 @@
             </g:SimplePanel>
         </m:MaterialContainer>
 
-        <m:MaterialFooter color="blue" copyright="© 2015 Denis Colliot" type="fixed" />
+        <m:MaterialFooter color="blue" copyright="© 2015 Denis Colliot" type="fixed">
+            <m:content />
+        </m:MaterialFooter>
     </g:HTMLPanel>
 
 </ui:UiBinder>
