@@ -1,4 +1,4 @@
-# Personal Blog
+# Personal Blog [![Build Status](https://travis-ci.org/denis-colliot/blog.svg?branch=master)](https://travis-ci.org/denis-colliot/blog)
 
 Personal blog web application built around [GWT](http://www.gwtproject.org) 2.7.0 and deployed on [CloudUnit](http://cloudunit.fr).
 
