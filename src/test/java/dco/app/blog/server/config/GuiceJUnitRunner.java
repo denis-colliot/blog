@@ -1,12 +1,13 @@
-package dco.app.blog.config;
+package dco.app.blog.server.config;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.persist.PersistService;
-import dco.app.blog.server.config.PersistenceModule;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.InitializationError;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.*;
 import java.util.Arrays;
@@ -35,6 +36,11 @@ import java.util.List;
  * @author Denis
  */
 public final class GuiceJUnitRunner extends BlockJUnit4ClassRunner {
+
+    /**
+     * Logger.
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(GuiceJUnitRunner.class);
 
     /**
      * Annotation used to specify modules to load for JUnit tests.
@@ -83,8 +89,11 @@ public final class GuiceJUnitRunner extends BlockJUnit4ClassRunner {
         final List<Class<?>> classes = getModulesFor(klass);
         this.injector = createInjectorFor(classes);
 
-        if (classes.contains(PersistenceModule.class)) {
-            startPersistUnit();
+        for (final Class<?> clazz : classes) {
+            if (PersistenceModule.class.isAssignableFrom(clazz)) {
+                startPersistUnit();
+                break;
+            }
         }
     }
 
@@ -140,6 +149,7 @@ public final class GuiceJUnitRunner extends BlockJUnit4ClassRunner {
      * <b>Should be done only once.</b>
      */
     private void startPersistUnit() {
+        LOGGER.info("Starting JPA Persist Service.");
         injector.getInstance(PersistService.class).start();
     }
 }

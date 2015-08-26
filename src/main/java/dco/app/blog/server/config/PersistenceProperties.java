@@ -36,9 +36,11 @@ final class PersistenceProperties {
      * Detects automatically local environment from production environment.
      * </p>
      *
+     * @param localPersistencePropertiesFile
+     *         The local persistence properties file (for development/test environment).
      * @return The persistence properties.
      */
-    public static Properties init() {
+    static Properties init(final String localPersistencePropertiesFile) {
 
         LOGGER.info("Initializing persistence properties ; System environment: {}", System.getenv());
 
@@ -96,7 +98,7 @@ final class PersistenceProperties {
 
             LOGGER.info("Debug environment ; loading persistence properties file.");
 
-            loadProperties("persistence.properties");
+            loadProperties(localPersistencePropertiesFile);
 
             // Mandatory properties.
             setMandatory(properties, "hibernate.dialect");
@@ -121,6 +123,10 @@ final class PersistenceProperties {
         LOGGER.info("Persistence properties: {}", properties);
 
         return properties;
+    }
+
+    protected static String getLocalPersistencePropertiesFile() {
+        return "";
     }
 
     /**

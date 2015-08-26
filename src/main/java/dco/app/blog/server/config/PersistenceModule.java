@@ -35,7 +35,8 @@ public class PersistenceModule extends AbstractModule {
         LOGGER.info("Initializing persistence module.");
 
         // Installs the JPA module.
-        install(new JpaPersistModule("blog-datasource").properties(PersistenceProperties.init()));
+        install(new JpaPersistModule("blog-datasource")
+                .properties(PersistenceProperties.init(getPersistencePropertiesFile())));
 
         // JSR-303 : bean validation.
         final ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -44,6 +45,15 @@ public class PersistenceModule extends AbstractModule {
 
         bind(AuthenticationDAO.class).to(AuthenticationDAOImpl.class).in(Singleton.class);
         bind(PostDAO.class).to(PostDAOImpl.class).in(Singleton.class);
+    }
+
+    /**
+     * Returns the local persistence properties file name.
+     *
+     * @return The local persistence properties file name.
+     */
+    protected String getPersistencePropertiesFile() {
+        return "persistence.properties";
     }
 
 }

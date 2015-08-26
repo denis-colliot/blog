@@ -9,7 +9,8 @@ import java.util.Date;
 /**
  * Abstract entity, parent class of all domain entities possessing a primary key.
  *
- * @param <K> Entity primary key type.
+ * @param <K>
+ *         Entity primary key type.
  * @author Denis
  */
 @MappedSuperclass
@@ -20,8 +21,10 @@ public abstract class AbstractEntity<K extends Serializable> implements Entity<K
      */
     private static final long serialVersionUID = -7822034341683441998L;
 
+    // GenerationType.AUTO does not seem to work properly with H2 test database.
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator", sequenceName = "hibernate_sequence", allocationSize = 1)
     @Column(name = "id")
     private K id;
 
@@ -70,7 +73,8 @@ public abstract class AbstractEntity<K extends Serializable> implements Entity<K
      * Allows sub entities to append other properties to the given {@code builder}.
      * </p>
      * <p>
-     * <em>Entity's {@code id}, {@code creation[date/user]} and {@code update[date/user]} properties have already been appended to the {@code builder}.</em>
+     * <em>Entity's {@code id}, {@code creation[date/user]} and {@code update[date/user]} properties have already been
+     * appended to the {@code builder}.</em>
      * </p>
      * <p>
      * Use given builder this way:
@@ -81,7 +85,8 @@ public abstract class AbstractEntity<K extends Serializable> implements Entity<K
      * <p>
      * </p>
      *
-     * @param builder The {@code toString} builder (never {@code null}).
+     * @param builder
+     *         The {@code toString} builder (never {@code null}).
      */
     protected abstract void appendToString(final ToStringBuilder builder);
 
